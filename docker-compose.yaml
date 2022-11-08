@@ -7,10 +7,13 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "secret"
       POSTGRES_DB: "database"
-      PGDATA: "/var/lib/postgresql/data/pgdata"
+      
+    command: ["postgres", "-c", "config_file=/etc/postgresql.conf"]
     volumes:
+      - ./postgresql.conf:/etc/postgresql.conf
       - ./init:/docker-entrypoint-initdb.d
       - database:/var/lib/postgresql/data
+      
     ports:
       - 5432:5432
     restart: unless-stopped
