@@ -60,5 +60,5 @@ services:
       - postgres
       - prometheus
 volumes:
-  database: {}
+  database: 
   pgadmin:
